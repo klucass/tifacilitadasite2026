@@ -1,0 +1,92 @@
+---
+import { Image } from "astro:assets";
+import capa from "../assets/images/capa-ebook.png";
+---
+
+<section
+  id="topo"
+  style="background:linear-gradient(180deg,#F0EDFA 0%,#FFFFFF 100%)"
+>
+  <div
+    style="max-width:1180px;margin:0 auto;padding:clamp(48px,8vw,88px) clamp(20px,5vw,28px) clamp(56px,9vw,96px)"
+  >
+    <div
+      style="display:flex;flex-wrap:wrap;gap:clamp(36px,6vw,64px);align-items:center;justify-content:center"
+    >
+      <div style="flex:1 1 420px;max-width:600px">
+        <span
+          style="display:inline-flex;align-items:center;background:#5800FF;color:#F0EDFA;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:22px"
+          >Resumo em PDF · Concursos Fiscal e Controle</span
+        >
+        <h1
+          style="font-size:clamp(34px,6.4vw,48px);line-height:1.03;letter-spacing:-0.03em;font-weight:800;margin:0 0 22px"
+        >
+          Domine Fluência em Dados com resumos <span
+            style="background:#72FFFF;padding:0 8px;border-radius:4px"
+          >
+            facilitados
+          </span> esquematizados e objetivos
+        </h1>
+        <p
+          style="font-size:clamp(17px,2.4vw,19px);line-height:1.6;color:#4A4A55;margin:0 0 34px;max-width:520px"
+        >
+          Tudo o que realmente cai sobre Fluência em Dados, organizado em
+          resumos esquematizados e simplificados — com cadernos de questões do
+          TEC Concursos.
+        </p>
+        <div
+          style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-bottom:28px"
+        >
+          <a
+            class="cta cta-primary"
+            href="https://tifacilitada.miblify.com/fluencia-em-dados/"
+            style="text-decoration:none;background:#5800FF;color:#fff;padding:17px 28px;border-radius:11px;font-size:17px;font-weight:700;display:inline-flex;align-items:center;gap:10px"
+            >Garantir meu acesso por R$97 <span style="font-size:18px">→</span
+            ></a
+          >
+          <div style="font-size:14px;color:#6A6A75;line-height:1.4">
+            Acesso imediato<br />Garantia de 7 dias
+          </div>
+        </div>
+        <div
+          style="display:flex;flex-wrap:wrap;gap:clamp(18px,4vw,28px);align-items:center;padding-top:28px;border-top:1px solid #ECEAF6"
+        >
+          <div>
+            <div style="font-size:24px;font-weight:800;letter-spacing:-0.02em">
+              +500
+            </div>
+            <div style="font-size:13px;color:#6A6A75">
+              concurseiros estudando
+            </div>
+          </div>
+
+          <div style="width:1px;height:36px;background:#ECEAF6"></div>
+          <div>
+            <div style="font-size:24px;font-weight:800;letter-spacing:-0.02em">
+              100%
+            </div>
+            <div style="font-size:13px;color:#6A6A75">digital · PDF</div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="flex:0 1 360px;display:flex;justify-content:center;max-width:100%"
+      >
+        <div
+          style="position:relative;padding:16px;background:#F6F4FC;border:1px solid #ECEAF6;border-radius:20px;max-width:100%"
+        >
+          <Image
+            src={capa}
+            alt="Capa do e-book — Resumo Facilitado de Fluência em Dados"
+            style="width:min(320px,72vw);height:auto;border-radius:12px;display:block"
+          />
+          <div
+            style="position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);background:#0B0B12;color:#fff;padding:8px 16px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap"
+          >
+            Resumo Facilitado
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

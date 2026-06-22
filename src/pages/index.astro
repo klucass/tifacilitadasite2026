@@ -1,17 +1,1235 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import BancasStrip from "../components/BancasStrip.astro";
+import Benefits from "../components/Benefits.astro";
+import { Image } from "astro:assets";
+import logo from "../assets/images/logo.png";
 
+const aulaImports = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/images/aulas/*.png",
+  { eager: true },
+);
+
+const captions = [
+  "Capa",
+  "Sumário",
+  "Mapa mental",
+  "Resumo esquematizado",
+  "SQL: comandos",
+  "Modelagem de dados",
+  "Big Data",
+  "Business Intelligence",
+  "Machine Learning",
+  "Questões comentadas",
+  "Caderno de questões",
+  "Revisão final",
+];
+
+const gallery = Array.from({ length: 12 }, (_, i) => {
+  const n = i + 1;
+  return {
+    id: `mat-${String(n).padStart(2, "0")}`,
+    src: aulaImports[`../assets/images/aulas/${n}.png`].default,
+    alt: `Aula ${n} — ${captions[i]}`,
+  };
+});
+
+const faqs = [
+  {
+    q: "Como eu recebo o material?",
+    a: "Assim que a compra é confirmada, você recebe o acesso imediato ao material em PDF para baixar e usar onde e como quiser.",
+  },
+  {
+    q: "É material impresso ou digital?",
+    a: "É 100% digital, em PDF. Você lê no celular, tablet ou computador — e, se preferir estudar no papel, pode imprimir à vontade.",
+  },
+  {
+    q: "Os cadernos de questões estão inclusos?",
+    a: "Sim. Cada aula inclui cadernos de questões do TEC Concursos para você treinar e aprofundar o conteúdo.",
+  },
+  {
+    q: "Serve para qual concurso?",
+    a: "É focado na área Fiscal e de Controle — Sefaz, TCE, TCM, CGU, TCU e outros cargos que cobram fluência em dados no edital.",
+  },
+  {
+    q: "Os resumos são atualizados?",
+    a: "Sim. Os materiais são revisados e atualizados conforme os editais mais recentes, para você estudar o conteúdo certo.",
+  },
+  {
+    q: "Preciso saber de TI para começar?",
+    a: "Não. O material é feito para iniciantes, com linguagem clara e simples. Você não precisa entender nada de TI para começar.",
+  },
+  {
+    q: "E se eu não gostar?",
+    a: "Você tem 7 dias de garantia. Se o material não for o que esperava, basta pedir o reembolso e devolvemos 100% do valor, sem burocracia.",
+  },
+  {
+    q: "Já sou aluno. Onde acesso o material?",
+    a: "É só entrar na Área do Aluno com seu login e senha para acessar todo o conteúdo, quando e onde quiser.",
+    link: {
+      href: "https://app.miblify.com/login/my_library",
+      label: "Acessar a Área do Aluno →",
+    },
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="TI Facilitada - Fluência em Dados">
+  <Header />
+  <Hero />
+  <BancasStrip />
+  <Benefits />
+
+  <!-- ===== CONTEÚDO PROGRAMÁTICO ===== -->
+  <section
+    id="conteudo"
+    style="background:#F6F4FC;border-top:1px solid #ECEAF6;border-bottom:1px solid #ECEAF6"
+  >
+    <div
+      style="max-width:1180px;margin:0 auto;padding:clamp(64px,9vw,104px) clamp(20px,5vw,28px)"
+    >
+      <div style="max-width:720px;margin-bottom:clamp(36px,5vw,48px)">
+        <span
+          style="display:inline-flex;align-items:center;background:#F0EDFA;color:#5800FF;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:18px"
+          >Conteúdo programático</span
+        >
+        <h2
+          style="font-size:clamp(28px,4.6vw,44px);line-height:1.06;letter-spacing:-0.025em;font-weight:800;margin:0 0 16px"
+        >
+          9 módulos completos, do banco de dados ao machine learning.
+        </h2>
+        <p
+          style="font-size:18px;line-height:1.6;color:#5A5A66;margin:0;max-width:600px"
+        >
+          Cada aula traz um resumo em PDF esquematizado e simplificado +
+          cadernos de questões do TEC Concursos para treinar e aprofundar. Você
+          ainda recebe 3 módulos bônus: LGPD, Sigilo Fiscal e Python.
+        </p>
+      </div>
+      <div
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px"
+      >
+        <div
+          style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
+        >
+          <div
+            style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
+          >
+            <span
+              style="flex:none;width:30px;height:30px;border-radius:8px;background:#F0EDFA;color:#5800FF;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center"
+              >01</span
+            >
+            <h3
+              style="font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0"
+            >
+              Banco de Dados
+            </h3>
+          </div>
+          <ul
+            style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px"
+          >
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Fundamentos de Banco de Dados
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Índices
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Views
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Procedures
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Bancos relacionais e não relacionais
+            </li>
+          </ul>
+        </div>
+
+        <div
+          style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
+        >
+          <div
+            style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
+          >
+            <span
+              style="flex:none;width:30px;height:30px;border-radius:8px;background:#F0EDFA;color:#5800FF;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center"
+              >02</span
+            >
+            <h3
+              style="font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0"
+            >
+              SQL
+            </h3>
+          </div>
+          <ul
+            style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px"
+          >
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Comando Select
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Comandos de Definição
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Comandos de Manipulação
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Comandos de Controle
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Comandos de Transação
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Agrupamento
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Relacionamentos
+            </li>
+          </ul>
+        </div>
+
+        <div
+          style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
+        >
+          <div
+            style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
+          >
+            <span
+              style="flex:none;width:30px;height:30px;border-radius:8px;background:#F0EDFA;color:#5800FF;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center"
+              >03</span
+            >
+            <h3
+              style="font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0"
+            >
+              Mineração de Dados
+            </h3>
+          </div>
+          <ul
+            style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px"
+          >
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>KDD
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Crisp-DM
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Técnicas descritivas e preditivas
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Classificação
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Regressão
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Associação
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Clusterização
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Mineração de Texto
+            </li>
+          </ul>
+        </div>
+
+        <div
+          style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
+        >
+          <div
+            style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
+          >
+            <span
+              style="flex:none;width:30px;height:30px;border-radius:8px;background:#F0EDFA;color:#5800FF;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center"
+              >04</span
+            >
+            <h3
+              style="font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0"
+            >
+              Gestão da Informação
+            </h3>
+          </div>
+          <ul
+            style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px"
+          >
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Dados, Informação e Conhecimento
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Dados Estruturados
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Dados Semiestruturados
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Dados Não Estruturados
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Dados Abertos
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Metadados
+            </li>
+          </ul>
+        </div>
+
+        <div
+          style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
+        >
+          <div
+            style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
+          >
+            <span
+              style="flex:none;width:30px;height:30px;border-radius:8px;background:#F0EDFA;color:#5800FF;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center"
+              >05</span
+            >
+            <h3
+              style="font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0"
+            >
+              Modelagem Relacional
+            </h3>
+          </div>
+          <ul
+            style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px"
+          >
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Etapas da Modelagem de Dados
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Arquitetura Três Esquemas
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Entidades
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Relacionamentos
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Cardinalidade
+            </li>
+          </ul>
+        </div>
+
+        <div
+          style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
+        >
+          <div
+            style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
+          >
+            <span
+              style="flex:none;width:30px;height:30px;border-radius:8px;background:#F0EDFA;color:#5800FF;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center"
+              >06</span
+            >
+            <h3
+              style="font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0"
+            >
+              Modelagem Multidimensional e BI
+            </h3>
+          </div>
+          <ul
+            style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px"
+          >
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Data Warehouse
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Data Mart
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>OLAP
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Business Intelligence
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Dashboards e Power BI
+            </li>
+          </ul>
+        </div>
+
+        <div
+          style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
+        >
+          <div
+            style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
+          >
+            <span
+              style="flex:none;width:30px;height:30px;border-radius:8px;background:#F0EDFA;color:#5800FF;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center"
+              >07</span
+            >
+            <h3
+              style="font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0"
+            >
+              Big Data
+            </h3>
+          </div>
+          <ul
+            style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px"
+          >
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Os Vs do Big Data
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Ferramentas de Big Data
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Data Lake
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Pipeline de Big Data
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>MapReduce
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Apache Spark
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Apache Hadoop
+            </li>
+          </ul>
+        </div>
+
+        <div
+          style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
+        >
+          <div
+            style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
+          >
+            <span
+              style="flex:none;width:30px;height:30px;border-radius:8px;background:#F0EDFA;color:#5800FF;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center"
+              >08</span
+            >
+            <h3
+              style="font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0"
+            >
+              Governança de Dados
+            </h3>
+          </div>
+          <ul
+            style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px"
+          >
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Framework DAMA-DMBOK
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Governança de TI
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Governança de Dados
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Equipe de Dados
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Ciclo de Vida de Dados
+            </li>
+          </ul>
+        </div>
+
+        <div
+          style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
+        >
+          <div
+            style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
+          >
+            <span
+              style="flex:none;width:30px;height:30px;border-radius:8px;background:#F0EDFA;color:#5800FF;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center"
+              >09</span
+            >
+            <h3
+              style="font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0"
+            >
+              Machine Learning
+            </h3>
+          </div>
+          <ul
+            style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px"
+          >
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Algoritmos Supervisionados
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Algoritmos Não Supervisionados
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Aprendizado por Reforço
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Deep Learning
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Etapas de Machine Learning
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Métricas de resultado
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Matriz de Confusão
+            </li>
+          </ul>
+        </div>
+
+        <div
+          style="border:1.5px solid #C9B8F0;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
+        >
+          <div
+            style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap"
+          >
+            <span
+              style="flex:none;background:#5800FF;color:#fff;padding:5px 11px;border-radius:999px;font-size:12px;font-weight:700"
+              >Bônus</span
+            >
+            <h3
+              style="font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0;color:#0B0B12"
+            >
+              LGPD
+            </h3>
+          </div>
+          <ul
+            style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px"
+          >
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Fundamentos e princípios da LGPD
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Dados pessoais e dados sensíveis
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Bases legais para tratamento
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Direitos do titular
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Agentes de tratamento (controlador e operador)
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>ANPD
+            </li>
+          </ul>
+        </div>
+
+        <div
+          style="border:1.5px solid #C9B8F0;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
+        >
+          <div
+            style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap"
+          >
+            <span
+              style="flex:none;background:#5800FF;color:#fff;padding:5px 11px;border-radius:999px;font-size:12px;font-weight:700"
+              >Bônus</span
+            >
+            <h3
+              style="font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0;color:#0B0B12"
+            >
+              Sigilo Fiscal
+            </h3>
+          </div>
+          <ul
+            style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px"
+          >
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Sigilo fiscal no CTN (art. 198)
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Exceções ao sigilo fiscal
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Transferência de sigilo
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Compartilhamento de informações fiscais
+            </li>
+            <li
+              style="display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#5A5A66;line-height:1.45"
+            >
+              <span
+                style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+              ></span>Sigilo bancário (LC 105/2001)
+            </li>
+          </ul>
+        </div>
+
+        <div
+          style="border:1.5px solid #C9B8F0;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
+        >
+          <div
+            style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap"
+          >
+            <span
+              style="flex:none;background:#5800FF;color:#fff;padding:5px 11px;border-radius:999px;font-size:12px;font-weight:700"
+              >Bônus</span
+            >
+            <h3
+              style="font-size:19px;font-weight:800;letter-spacing:-0.01em;margin:0;color:#0B0B12"
+            >
+              Python
+            </h3>
+          </div>
+          <p
+            style="font-size:15px;line-height:1.55;color:#5A5A66;margin:0 0 14px"
+          >
+            Resumo completo e objetivo de Python focado em Análise de Dados para
+            concursos das áreas Fiscal, Controle e Policial.
+          </p>
+          <p style="font-size:15px;line-height:1.55;color:#5A5A66;margin:0">
+            Aprenda a sintaxe da linguagem e as principais bibliotecas cobradas
+            em provas de forma facilitada e com foco em questões.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALERIA ===== -->
+  <section
+    id="galeria"
+    style="padding:clamp(64px,9vw,104px) 0;background:linear-gradient(180deg,#33148C 0%,#1E0A52 100%);color:#fff"
+  >
+    <div
+      style="max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,28px);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(32px,5vw,40px)"
+    >
+      <div style="max-width:640px">
+        <span
+          style="display:inline-flex;align-items:center;background:rgba(114,255,255,0.14);color:#72FFFF;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:18px"
+          >Veja por dentro</span
+        >
+        <h2
+          style="font-size:clamp(28px,4.6vw,44px);line-height:1.06;letter-spacing:-0.025em;font-weight:800;margin:0;color:#fff"
+        >
+          Páginas reais do material
+        </h2>
+        <p
+          style="font-size:17px;line-height:1.6;color:#B8B5C6;margin:14px 0 0;max-width:520px"
+        >
+          Arraste para o lado e veja amostras do conteúdo do material.
+        </p>
+      </div>
+      <div style="display:flex;gap:12px">
+        <button
+          id="gal-prev"
+          type="button"
+          aria-label="Anterior"
+          style="width:52px;height:52px;border-radius:999px;border:1px solid #72FFFF;background:#72FFFF;color:#1E0A52;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center"
+          >←</button
+        >
+        <button
+          id="gal-next"
+          type="button"
+          aria-label="Próxima"
+          style="width:52px;height:52px;border-radius:999px;border:1px solid #72FFFF;background:#72FFFF;color:#1E0A52;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center"
+          >→</button
+        >
+      </div>
+    </div>
+    <div
+      id="galeria-track"
+      style="display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px clamp(20px,5vw,28px) 32px;scroll-padding-left:28px;max-width:1180px;margin:0 auto"
+    >
+      {
+        gallery.map((item) => (
+          <div style="flex:none;scroll-snap-align:start">
+            <Image
+              id={item.id}
+              src={item.src}
+              alt={item.alt}
+              loading="lazy"
+              style="display:block;width:clamp(244px,78vw,384px);height:clamp(345px,110.3vw,543px);border-radius:14px;object-fit:cover;background:#2A1A5E"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ===== PARA QUEM É ===== -->
+  <section
+    style="background:#F6F4FC;border-top:1px solid #ECEAF6;border-bottom:1px solid #ECEAF6"
+  >
+    <div
+      style="max-width:1180px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,5vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px"
+    >
+      <div
+        style="background:#fff;border:1px solid #ECEAF6;border-radius:18px;padding:clamp(28px,4vw,40px) clamp(24px,3vw,36px)"
+      >
+        <h3
+          style="font-size:22px;font-weight:800;letter-spacing:-0.02em;margin:0 0 24px"
+        >
+          É para você que…
+        </h3>
+        <ul
+          style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px"
+        >
+          <li
+            style="display:flex;gap:14px;align-items:flex-start;font-size:16px;color:#3A3A44;line-height:1.5"
+          >
+            <span style="color:#5800FF;font-weight:800;flex:none">✓</span>Está
+            começando e não entende nada de TI
+          </li>
+          <li
+            style="display:flex;gap:14px;align-items:flex-start;font-size:16px;color:#3A3A44;line-height:1.5"
+          >
+            <span style="color:#5800FF;font-weight:800;flex:none">✓</span>Já
+            estudou, mas ainda se sente perdido
+          </li>
+          <li
+            style="display:flex;gap:14px;align-items:flex-start;font-size:16px;color:#3A3A44;line-height:1.5"
+          >
+            <span style="color:#5800FF;font-weight:800;flex:none">✓</span>Quer
+            focar no que cai e passar no concurso
+          </li>
+          <li
+            style="display:flex;gap:14px;align-items:flex-start;font-size:16px;color:#3A3A44;line-height:1.5"
+          >
+            <span style="color:#5800FF;font-weight:800;flex:none">✓</span>Tem
+            pouco tempo e precisa do essencial
+          </li>
+        </ul>
+      </div>
+      <div
+        style="background:#fff;border:1px solid #ECEAF6;border-radius:18px;padding:clamp(28px,4vw,40px) clamp(24px,3vw,36px)"
+      >
+        <h3
+          style="font-size:22px;font-weight:800;letter-spacing:-0.02em;margin:0 0 24px;color:#6A6A75"
+        >
+          Não é para você que…
+        </h3>
+        <ul
+          style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px"
+        >
+          <li
+            style="display:flex;gap:14px;align-items:flex-start;font-size:16px;color:#8A8A95;line-height:1.5"
+          >
+            <span style="font-weight:800;flex:none">✕</span>Não vai prestar
+            concurso da área Fiscal ou de Controle
+          </li>
+          <li
+            style="display:flex;gap:14px;align-items:flex-start;font-size:16px;color:#8A8A95;line-height:1.5"
+          >
+            <span style="font-weight:800;flex:none">✕</span>Procura aulas em
+            vídeo ou mentoria ao vivo
+          </li>
+          <li
+            style="display:flex;gap:14px;align-items:flex-start;font-size:16px;color:#8A8A95;line-height:1.5"
+          >
+            <span style="font-weight:800;flex:none">✕</span>Quer aprofundamento
+            acadêmico além do edital
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OFERTA ===== -->
+  <section id="oferta" style="background:#fff">
+    <div
+      style="max-width:1180px;margin:0 auto;padding:clamp(64px,9vw,104px) clamp(20px,5vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(36px,5vw,48px);align-items:center"
+    >
+      <div>
+        <span
+          style="display:inline-flex;align-items:center;background:#F0EDFA;color:#5800FF;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:18px"
+          >Oferta exclusiva</span
+        >
+        <h2
+          style="font-size:clamp(28px,4.6vw,44px);line-height:1.06;letter-spacing:-0.025em;font-weight:800;margin:0 0 24px"
+        >
+          Tudo o que você precisa sobre dados, em um só lugar.
+        </h2>
+        <ul
+          style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px"
+        >
+          <li
+            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#3A3A44"
+          >
+            <span style="color:#5800FF;font-weight:800;flex:none">✓</span>E-book
+            completo em PDF com 9 módulos + 3 bônus esquematizados
+          </li>
+          <li
+            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#3A3A44"
+          >
+            <span style="color:#5800FF;font-weight:800;flex:none">✓</span
+            >Resumos simplificados, mapas mentais e tabelas
+          </li>
+          <li
+            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#3A3A44"
+          >
+            <span style="color:#5800FF;font-weight:800;flex:none">✓</span
+            >Cadernos de questões do TEC Concursos
+          </li>
+          <li
+            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#3A3A44"
+          >
+            <span style="color:#5800FF;font-weight:800;flex:none">✓</span>Acesso
+            imediato e atualizações da edição
+          </li>
+        </ul>
+      </div>
+      <div
+        style="background:#fff;border:1px solid #ECEAF6;border-radius:22px;padding:clamp(32px,5vw,44px) clamp(28px,4vw,40px);text-align:center;box-shadow:0 18px 48px rgba(88,0,255,0.10)"
+      >
+        <div
+          style="font-size:13px;font-weight:600;color:#8A8A95;margin-bottom:12px"
+        >
+          Resumo Facilitado de Fluência em Dados
+        </div>
+        <div style="font-size:16px;color:#9A96AC;margin-bottom:4px">
+          de <span style="text-decoration:line-through">R$127</span> por
+        </div>
+        <div
+          style="display:flex;align-items:baseline;justify-content:center;gap:6px;margin-bottom:6px"
+        >
+          <span style="font-size:22px;font-weight:700;color:#5A5A66">R$</span
+          ><span
+            style="font-size:clamp(54px,9vw,54px);font-weight:500;letter-spacing:-0.03em;line-height:1"
+            >97</span
+          >
+        </div>
+        <div style="font-size:15px;color:#6A6A75;margin-bottom:28px">
+          à vista ou parcelado no cartão
+        </div>
+        <a
+          class="cta cta-primary"
+          href="https://tifacilitada.miblify.com/fluencia-em-dados/"
+          style="display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#5800FF;color:#fff;padding:18px 28px;border-radius:12px;font-size:18px;font-weight:700;margin-bottom:18px"
+          >Quero garantir meu acesso <span>→</span></a
+        >
+        <div
+          style="display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;color:#6A6A75"
+        >
+          <span style="color:#5800FF;font-weight:800">✓</span>Compra segura ·
+          Garantia de 7 dias
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GARANTIA ===== -->
+  <section
+    style="background:#F6F4FC;border-top:1px solid #ECEAF6;border-bottom:1px solid #ECEAF6"
+  >
+    <div
+      style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,40px);justify-content:center;max-width:760px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,5vw,28px)"
+    >
+      <div
+        style="flex:none;width:124px;height:124px;border-radius:999px;border:2px solid #5800FF;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#5800FF"
+      >
+        <span
+          style="font-size:38px;font-weight:800;line-height:1;letter-spacing:-0.02em"
+          >7</span
+        >
+        <span style="font-size:12px;font-weight:600;margin-top:4px">dias</span>
+      </div>
+      <div style="flex:1 1 280px">
+        <h2
+          style="font-size:clamp(24px,3.8vw,34px);font-weight:800;letter-spacing:-0.02em;margin:0 0 12px"
+        >
+          Risco zero pra você
+        </h2>
+        <p style="font-size:17px;line-height:1.6;color:#5A5A66;margin:0">
+          Estude o material por 7 dias. Se não for o que você esperava,
+          devolvemos 100% do valor — sem perguntas, sem burocracia.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" style="background:#fff;border-top:1px solid #ECEAF6">
+    <div
+      style="max-width:820px;margin:0 auto;padding:clamp(64px,9vw,104px) clamp(20px,5vw,28px)"
+    >
+      <div style="text-align:center;margin-bottom:clamp(36px,5vw,48px)">
+        <span
+          style="display:inline-flex;align-items:center;background:#F0EDFA;color:#5800FF;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:18px"
+          >Dúvidas frequentes</span
+        >
+        <h2
+          style="font-size:clamp(28px,4.6vw,44px);line-height:1.06;letter-spacing:-0.025em;font-weight:800;margin:0"
+        >
+          Ainda com perguntas?
+        </h2>
+      </div>
+      <div
+        class="faq"
+        style="background:#fff;border:1px solid #ECEAF6;border-radius:18px;overflow:hidden;box-shadow:0 18px 48px rgba(88,0,255,0.07)"
+      >
+        {
+          faqs.map((item, i) => (
+            <details
+              name="faq"
+              open={i === 0}
+              style="border-top:1px solid #ECEAF6"
+            >
+              <summary style="list-style:none;cursor:pointer;padding:24px clamp(20px,4vw,28px);display:flex;align-items:center;justify-content:space-between;gap:20px">
+                <span style="font-size:17px;font-weight:700;color:#0B0B12;letter-spacing:-0.01em">
+                  {item.q}
+                </span>
+                <span
+                  class="faq-icon"
+                  style="flex:none;font-size:26px;color:#5800FF;font-weight:400;line-height:1"
+                />
+              </summary>
+              <div style="padding:0 clamp(20px,4vw,28px) 26px;font-size:16px;line-height:1.65;color:#5A5A66;max-width:660px">
+                {item.a}
+                {item.link && (
+                  <a
+                    href={item.link.href}
+                    target="_blank"
+                    rel="noopener"
+                    style="display:inline-block;margin-top:10px;color:#5800FF;font-weight:700;text-decoration:none"
+                  >
+                    {item.link.label}
+                  </a>
+                )}
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section style="background:#5800FF;color:#fff">
+    <div
+      style="max-width:900px;margin:0 auto;padding:clamp(72px,10vw,110px) clamp(20px,5vw,28px);text-align:center"
+    >
+      <h2
+        style="font-size:clamp(30px,6vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:800;margin:0 0 20px;color:#fff"
+      >
+        Pare de travar em Fluência de Dados.<br />Comece a acertar as questões.
+      </h2>
+      <p
+        style="font-size:clamp(17px,2.4vw,19px);line-height:1.6;color:#D8CEFF;margin:0 auto 36px;max-width:560px"
+      >
+        9 módulos + 3 bônus esquematizados + cadernos de questões por R$97, com
+        7 dias de garantia.
+      </p>
+      <a
+        class="cta cta-light"
+        href="https://tifacilitada.miblify.com/fluencia-em-dados/"
+        style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:#fff;color:#5800FF;padding:18px 32px;border-radius:12px;font-size:18px;font-weight:700"
+        >Garantir meu acesso agora <span>→</span></a
+      >
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="border-top:1px solid #ECEAF6;background:#fff">
+    <div
+      style="max-width:1180px;margin:0 auto;padding:44px clamp(20px,5vw,28px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px"
+    >
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <img
+          src={logo.src}
+          alt="TI Facilitada"
+          style="height:34px;width:auto;align-self:flex-start"
+        /><span style="font-size:13px;color:#9A96AC"
+          >tifacilitada.com · Resumos de TI para concursos</span
+        >
+        <a
+          href="https://app.miblify.com/login/my_library"
+          target="_blank"
+          rel="noopener"
+          style="text-decoration:none;color:#5800FF;font-size:13px;font-weight:700;align-self:flex-start"
+          >Área do aluno →</a
+        >
+      </div>
+      <div style="font-size:13px;color:#9A96AC;max-width:420px;line-height:1.5">
+        Caso precise de ajuda, envie um e-mail para contato@tifacilitada.com
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq .faq-icon::before {
+      content: "+";
+    }
+    .faq details[open] .faq-icon::before {
+      content: "–";
+    }
+  </style>
+
+  <script is:inline>
+    const track = document.getElementById("galeria-track");
+    document.getElementById("gal-prev")?.addEventListener("click", () =>
+      track?.scrollBy({
+        left: -track.clientWidth * 0.85,
+        behavior: "smooth",
+      }),
+    );
+    document
+      .getElementById("gal-next")
+      ?.addEventListener("click", () =>
+        track?.scrollBy({ left: track.clientWidth * 0.85, behavior: "smooth" }),
+      );
+  </script>
+</Layout>

@@ -1,0 +1,67 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  color: #0B0B12;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #72FFFF;
+  color: #0B0B12;
+}
+
+image-slot {
+  display: block;
+}
+
+.gal::-webkit-scrollbar {
+  height: 8px;
+}
+
+.gal::-webkit-scrollbar-thumb {
+  background: #D9D4EC;
+  border-radius: 999px;
+}
+
+.gal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (max-width: 760px) {
+  .nav-links {
+    display: none;
+  }
+}
+
+.cta {
+  transition:
+    background-color 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.cta:hover {
+  transform: translateY(-1px);
+}
+
+.cta-primary:hover {
+  background: #4400cc !important;
+  box-shadow: 0 8px 24px rgba(88, 0, 255, 0.28);
+}
+
+.cta-light:hover {
+  background: #72ffff !important;
+  box-shadow: 0 8px 24px rgba(11, 11, 18, 0.18);
+}
