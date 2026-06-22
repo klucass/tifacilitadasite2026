@@ -27,12 +27,14 @@ const captions = [
   "Revisão final",
 ];
 
-const gallery = Array.from({ length: 12 }, (_, i) => {
+const totalAulas = Object.keys(aulaImports).length;
+
+const gallery = Array.from({ length: totalAulas }, (_, i) => {
   const n = i + 1;
   return {
     id: `mat-${String(n).padStart(2, "0")}`,
     src: aulaImports[`../assets/images/aulas/${n}.png`].default,
-    alt: `Aula ${n} — ${captions[i]}`,
+    alt: captions[i] ? `Aula ${n} — ${captions[i]}` : `Página ${n} do material`,
   };
 });
 
@@ -1207,6 +1209,13 @@ const faqs = [
   </footer>
 
   <style>
+    #galeria-track {
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge antigo */
+    }
+    #galeria-track::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
     .faq summary::-webkit-details-marker {
       display: none;
     }
@@ -1220,16 +1229,87 @@ const faqs = [
 
   <script is:inline>
     const track = document.getElementById("galeria-track");
-    document.getElementById("gal-prev")?.addEventListener("click", () =>
-      track?.scrollBy({
-        left: -track.clientWidth * 0.85,
-        behavior: "smooth",
-      }),
-    );
-    document
-      .getElementById("gal-next")
-      ?.addEventListener("click", () =>
-        track?.scrollBy({ left: track.clientWidth * 0.85, behavior: "smooth" }),
-      );
+    if (track) {
+      // Clona os slides em 3 conjuntos [antes][reais][depois] para um
+      // loop horizontal sem emendas em ambas as direções.
+      const originals = Array.from(track.children);
+      const cloneSet = () =>
+        originals.map((node) => {
+          const clone = node.cloneNode(true);
+          clone
+            .querySelectorAll("[id]")
+            .forEach((el) => el.removeAttribute("id"));
+          clone.setAttribute("aria-hidden", "true");
+          return clone;
+        });
+      const before = cloneSet();
+      const after = cloneSet();
+      before.forEach((clone) => track.insertBefore(clone, originals[0]));
+      after.forEach((clone) => track.appendChild(clone));
+
+      const firstReal = originals[0];
+      const firstAfter = after[0];
+      let setWidth = 0;
+
+      const measure = () => {
+        // largura exata de um conjunto (imune a paddings do container)
+        setWidth = firstAfter.offsetLeft - firstReal.offsetLeft;
+        track.scrollLeft = setWidth; // ancora no conjunto central (real)
+      };
+      requestAnimationFrame(measure);
+      window.addEventListener("load", measure);
+      window.addEventListener("resize", measure);
+
+      // Recoloca a rolagem no conjunto central. O salto é de exatamente
+      // uma largura de conjunto, caindo num ponto visualmente idêntico.
+      const recenter = () => {
+        const x = track.scrollLeft;
+        if (x < setWidth * 0.5) track.scrollLeft = x + setWidth;
+        else if (x > setWidth * 1.5) track.scrollLeft = x - setWidth;
+      };
+
+      let programmatic = false;
+      let settleTimer;
+      let ticking = false;
+
+      const onSettle = () => {
+        recenter();
+        programmatic = false;
+      };
+
+      track.addEventListener("scroll", () => {
+        if (!setWidth) return;
+        // Durante a rolagem suave dos botões, não reposiciona no meio da
+        // animação (isso a cancelaria) — espera ela assentar e só então
+        // recoloca no centro, de forma invisível.
+        if (programmatic) {
+          clearTimeout(settleTimer);
+          settleTimer = setTimeout(onSettle, 120);
+          return;
+        }
+        // Arrasto/roda do mouse: reposiciona imediatamente (sem emenda).
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          recenter();
+          ticking = false;
+        });
+      });
+
+      const step = () => Math.max(track.clientWidth * 0.85, 1);
+      const navigate = (dir) => {
+        programmatic = true;
+        recenter(); // re-centra antes de animar, garantindo espaço no buffer
+        clearTimeout(settleTimer);
+        track.scrollBy({ left: dir * step(), behavior: "smooth" });
+        settleTimer = setTimeout(onSettle, 700); // fallback
+      };
+      document
+        .getElementById("gal-prev")
+        ?.addEventListener("click", () => navigate(-1));
+      document
+        .getElementById("gal-next")
+        ?.addEventListener("click", () => navigate(1));
+    }
   </script>
 </Layout>
