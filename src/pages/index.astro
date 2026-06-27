@@ -901,6 +901,8 @@ const faqs = [
               src={item.src}
               alt={item.alt}
               loading="lazy"
+              widths={[244, 384, 488, 768]}
+              sizes="(max-width: 492px) 78vw, 384px"
               style="display:block;width:clamp(244px,78vw,384px);height:clamp(345px,110.3vw,543px);border-radius:14px;object-fit:cover;background:#2A1A5E"
             />
           </div>
@@ -1252,13 +1254,23 @@ const faqs = [
       let setWidth = 0;
 
       const measure = () => {
-        // largura exata de um conjunto (imune a paddings do container)
+        // largura exata de um conjunto (imune a paddings do container).
+        // Os slides têm dimensões fixas em CSS (clamp), então uma única
+        // medição no primeiro frame já é exata — não precisa remedir no
+        // "load" (as imagens lazy não alteram o tamanho da caixa).
         setWidth = firstAfter.offsetLeft - firstReal.offsetLeft;
         track.scrollLeft = setWidth; // ancora no conjunto central (real)
       };
       requestAnimationFrame(measure);
-      window.addEventListener("load", measure);
-      window.addEventListener("resize", measure);
+
+      // Só remede quando a largura da viewport muda (o clamp(vw) depende
+      // dela). Debounce evita reflows forçados em sequência durante o
+      // arraste da janela.
+      let resizeTimer;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(measure, 150);
+      });
 
       // Recoloca a rolagem no conjunto central. O salto é de exatamente
       // uma largura de conjunto, caindo num ponto visualmente idêntico.
