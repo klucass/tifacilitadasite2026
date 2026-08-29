@@ -6,6 +6,7 @@ import BancasStrip from "../components/BancasStrip.astro";
 import Benefits from "../components/Benefits.astro";
 import { Image } from "astro:assets";
 import logo from "../assets/images/logo.png";
+import capaAlagoas from "../assets/images/capa_alagoas.png";
 
 const aulaImports = import.meta.glob<{ default: ImageMetadata }>(
   "../assets/images/aulas/*.png",
@@ -901,9 +902,9 @@ const faqs = [
               src={item.src}
               alt={item.alt}
               loading="lazy"
-              widths={[244, 384, 488, 768]}
-              sizes="(max-width: 492px) 78vw, 384px"
-              style="display:block;width:clamp(244px,78vw,384px);height:clamp(345px,110.3vw,543px);border-radius:14px;object-fit:cover;background:#2A1A5E"
+              widths={[280, 460, 560, 920]}
+              sizes="(max-width: 561px) 82vw, 460px"
+              style="display:block;width:clamp(280px,82vw,460px);height:clamp(396px,115.9vw,650px);border-radius:14px;object-fit:cover;background:#2A1A5E"
             />
           </div>
         ))
@@ -1098,6 +1099,80 @@ const faqs = [
           Estude o material por 7 dias. Se não for o que você esperava,
           devolvemos 100% do valor.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEFAZ ALAGOAS ===== -->
+  <section id="sefaz-al" style="background:#fff">
+    <div
+      style="max-width:1180px;margin:0 auto;padding:clamp(64px,9vw,104px) clamp(20px,5vw,28px)"
+    >
+      <div
+        style="background:#F6F4FC;border:1px solid #C9B8F0;border-radius:22px;padding:clamp(28px,5vw,48px);display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,48px);justify-content:center"
+      >
+        <div style="flex:1 1 340px;max-width:560px">
+          <span
+            style="display:inline-flex;align-items:center;background:#5800FF;color:#F0EDFA;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:18px"
+            >Novo · Pós-edital</span
+          >
+          <h2
+            style="font-size:clamp(26px,4.2vw,38px);line-height:1.08;letter-spacing:-0.025em;font-weight:800;margin:0 0 16px"
+          >
+            Vai prestar a SEFAZ Alagoas?
+          </h2>
+          <p
+            style="font-size:17px;line-height:1.6;color:#5A5A66;margin:0 0 24px;max-width:480px"
+          >
+            Na prova de Auditor Fiscal, TI vale 30% da pontuação: 50 pontos na
+            objetiva e mais 10 na discursiva de Ciência de Dados. Preparamos um
+            material pós-edital, bloco a bloco, para você garantir esses pontos.
+          </p>
+          <div
+            style="display:flex;flex-wrap:wrap;gap:clamp(16px,4vw,28px);align-items:center;margin-bottom:28px"
+          >
+            <div>
+              <div style="font-size:22px;font-weight:800;letter-spacing:-0.02em">
+                60
+              </div>
+              <div style="font-size:13px;color:#6A6A75">pontos de TI</div>
+            </div>
+            <div style="width:1px;height:32px;background:#D9D4EC"></div>
+            <div>
+              <div style="font-size:22px;font-weight:800;letter-spacing:-0.02em">
+                4
+              </div>
+              <div style="font-size:13px;color:#6A6A75">blocos do edital</div>
+            </div>
+            <div style="width:1px;height:32px;background:#D9D4EC"></div>
+            <div>
+              <div style="font-size:22px;font-weight:800;letter-spacing:-0.02em">
+                +10
+              </div>
+              <div style="font-size:13px;color:#6A6A75">temas de discursiva</div>
+            </div>
+          </div>
+          <a
+            class="cta cta-primary"
+            href="/sefaz-alagoas"
+            style="text-decoration:none;background:#5800FF;color:#fff;padding:16px 26px;border-radius:11px;font-size:17px;font-weight:700;display:inline-flex;align-items:center;gap:10px"
+            >Ver o material da SEFAZ AL <span style="font-size:18px">→</span></a
+          >
+        </div>
+        <a
+          href="/sefaz-alagoas"
+          style="flex:0 1 260px;display:flex;justify-content:center;max-width:100%;text-decoration:none"
+          aria-label="Ver o material de TI para a SEFAZ AL"
+        >
+          <Image
+            src={capaAlagoas}
+            alt="Capa do Resumo Facilitado de Tecnologia da Informação — Pós Edital SEFAZ AL, Auditor Fiscal"
+            loading="lazy"
+            widths={[260, 520]}
+            sizes="(max-width: 420px) 68vw, 260px"
+            style="width:min(260px,68vw);height:auto;border-radius:14px;display:block;box-shadow:0 18px 48px rgba(88,0,255,0.16)"
+          />
+        </a>
       </div>
     </div>
   </section>
