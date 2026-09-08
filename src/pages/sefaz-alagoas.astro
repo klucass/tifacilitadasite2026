@@ -133,10 +133,183 @@ const modulos = [
 
 const totalTemasDiscursiva = 10;
 
+const aulas = [
+  {
+    nome: "Gestão da Informação",
+    bloco: "Ciência de Dados",
+    disponivel: true,
+    assuntos: [
+      "Dado, informação, conhecimento e inteligência",
+      "Dados estruturados, não estruturados e dados abertos",
+      "Coleta, tratamento, armazenamento, integração e recuperação de dados",
+    ],
+  },
+  {
+    nome: "Banco de Dados",
+    bloco: "Ciência de Dados",
+    disponivel: true,
+    assuntos: [
+      "Bancos de dados relacionais: conceitos e características",
+      "Metadados, tabelas, visões, índices, chaves e relacionamentos",
+    ],
+  },
+  {
+    nome: "Modelagem Relacional",
+    bloco: "Ciência de Dados",
+    disponivel: true,
+    assuntos: [
+      "Modelagem relacional",
+      "Álgebra relacional",
+      "Normalização",
+    ],
+  },
+  {
+    nome: "Machine Learning",
+    bloco: "Ciência de Dados e IA",
+    previsao: "08/09",
+    assuntos: [
+      "Aprendizado de máquina: fundamentos, principais algoritmos e métricas de desempenho",
+      "Fundamentos de inteligência artificial",
+      "Redes neurais artificiais e deep learning",
+    ],
+  },
+  {
+    nome: "Data Mining",
+    bloco: "Ciência de Dados",
+    previsao: "11/09",
+    assuntos: [
+      "Processo de ciência de dados e modelo de referência CRISP-DM",
+      "Técnicas de pré-processamento de dados",
+      "Mineração de dados: regras de associação, regressão e clusterização",
+      "Detecção de anomalias e modelagem preditiva",
+      "Visualização e análise exploratória de dados",
+    ],
+  },
+  {
+    nome: "SQL",
+    bloco: "Ciência de Dados",
+    previsao: "15/09",
+    assuntos: ["Planilhas e SQL"],
+  },
+  {
+    nome: "Big Data",
+    bloco: "Ciência de Dados",
+    previsao: "18/09",
+    assuntos: ["Big Data: conceitos, premissas e aplicações"],
+  },
+  {
+    nome: "Business Intelligence e Modelagem Multidimensional",
+    bloco: "Ciência de Dados",
+    previsao: "22/09",
+    assuntos: [
+      "Business Intelligence",
+      "Modelagem dimensional e multidimensional",
+    ],
+  },
+  {
+    nome: "Inteligência Artificial Generativa",
+    bloco: "Inteligência Artificial",
+    previsao: "25/09",
+    assuntos: [
+      "IA generativa, modelos de linguagem de grande escala (LLM) e geração aumentada por recuperação (RAG)",
+      "Processamento de linguagem natural e mineração de texto",
+      "Visão computacional",
+    ],
+  },
+  {
+    nome: "Modelagem de Processos",
+    bloco: "Desenvolvimento",
+    previsao: "29/09",
+    assuntos: [
+      "Modelagem de processos de negócio",
+      "Metodologias ágeis de desenvolvimento de software: XP, Scrum e Kanban",
+    ],
+  },
+  {
+    nome: "DevOps",
+    bloco: "Desenvolvimento",
+    previsao: "02/10",
+    assuntos: [
+      "DevOps e DevSecOps: conceitos, práticas e ferramentas",
+      "Integração contínua e entrega contínua",
+      "Segurança no desenvolvimento",
+    ],
+  },
+  {
+    nome: "Java",
+    bloco: "Desenvolvimento",
+    previsao: "06/10",
+    assuntos: ["Linguagem Java"],
+  },
+  {
+    nome: "JavaScript",
+    bloco: "Desenvolvimento",
+    previsao: "09/10",
+    assuntos: ["Linguagem JavaScript"],
+  },
+  {
+    nome: "Engenharia de Software",
+    bloco: "Desenvolvimento",
+    previsao: "13/10",
+    assuntos: [
+      "Arquitetura de software e arquitetura de microsserviços",
+      "Arquitetura orientada a eventos",
+      "Soluções de integração entre sistemas e API REST",
+      "Testes de software: unitários, de integração e TDD",
+      "Ferramentas de versionamento Git",
+      "Conceitos avançados em engenharia e arquitetura de software",
+    ],
+  },
+  {
+    nome: "Infraestrutura e Cloud",
+    bloco: "Infraestrutura de TIC e Segurança",
+    previsao: "16/10",
+    assuntos: [
+      "Infraestrutura em nuvem",
+      "Contêineres e orquestração: Docker, Podman e Kubernetes",
+      "Redes de computadores, firewall, WAF, proxy e proxy reverso",
+      "Redes MPLS e SD-WAN, segmentação e microssegmentação de redes",
+    ],
+  },
+  {
+    nome: "ITIL",
+    bloco: "Infraestrutura de TIC e Segurança",
+    previsao: "20/10",
+    assuntos: [
+      "Gestão de serviços de TI",
+      "ITIL v4: controle de mudanças e gerenciamento de liberação",
+      "Gerenciamento de incidentes e problemas, e service desk",
+    ],
+  },
+  {
+    nome: "Segurança da Informação",
+    bloco: "Infraestrutura de TIC e Segurança",
+    previsao: "23/10",
+    assuntos: [
+      "Segurança da informação: gestão, continuidade do negócio e gestão de riscos",
+      "Gestão de identidade e acesso",
+      "Arquitetura zero trust",
+      "Identificação, análise e correção de vulnerabilidades",
+      "Ataques em redes e aplicações corporativas e medidas de proteção",
+      "Infraestrutura de chaves públicas e certificação digital",
+      "Forense computacional: evidências, hash de arquivos e cadeia de custódia",
+      "Coleta, espelhamento e imagem de discos, e técnicas antiforense",
+      "Prevenção e tratamento de incidentes de segurança da informação",
+    ],
+  },
+];
+
+const aulasDisponiveis = aulas.filter((a) => a.disponivel).length;
+const aulasPrevistas = aulas.length - aulasDisponiveis;
+
 const faqs = [
   {
     q: "O material é específico para a SEFAZ Alagoas?",
     a: "Sim. O conteúdo é organizado bloco a bloco seguindo a divisão de pontos da prova de TI da SEFAZ-AL: Ciência de Dados, Inteligência Artificial, Desenvolvimento e Infraestrutura de TIC e Segurança — com peso maior justamente onde a prova concentra mais pontos.",
+  },
+  {
+    q: "E as aulas que ainda não foram liberadas?",
+    a: "Comprando agora, você recebe todas as aulas do material, sem pagar nada a mais. As já liberadas ficam disponíveis na hora e as demais entram na Área do Aluno conforme o cronograma previsto.",
   },
   {
     q: "Preciso saber de TI para começar?",
@@ -537,6 +710,142 @@ const faqs = [
     </div>
   </section>
 
+  <!-- ===== CRONOGRAMA DE AULAS ===== -->
+  <section id="aulas" style="background:#fff;border-bottom:1px solid #ECEAF6">
+    <div
+      style="max-width:1180px;margin:0 auto;padding:clamp(64px,9vw,104px) clamp(20px,5vw,28px)"
+    >
+      <div style="max-width:720px;margin-bottom:clamp(32px,4vw,40px)">
+        <span
+          style="display:inline-flex;align-items:center;background:#F0EDFA;color:#5800FF;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:18px"
+          >Aulas do material</span
+        >
+        <h2
+          style="font-size:clamp(28px,4.6vw,44px);line-height:1.06;letter-spacing:-0.025em;font-weight:800;margin:0 0 16px"
+        >
+          Cronograma de aulas
+        </h2>
+        <p
+          style="font-size:18px;line-height:1.6;color:#5A5A66;margin:0;max-width:620px"
+        >
+          Comprando agora você garante as {aulas.length} aulas do material.
+          {aulasDisponiveis} já estão na Área do Aluno e as outras
+          {aulasPrevistas} são liberadas <strong style="color:#0B0B12"
+            >conforme o cronograma previsto</strong
+          >, sem custo adicional. Abra uma aula para ver os assuntos.
+        </p>
+      </div>
+
+      <div style="margin-bottom:clamp(28px,4vw,36px)">
+        <div
+          style="font-size:13px;font-weight:700;color:#8A8A95;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px"
+        >
+          Em toda aula você recebe
+        </div>
+        <div
+          style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#C9B8F0;border:1px solid #C9B8F0;border-radius:16px;overflow:hidden"
+        >
+          <div style="background:#F6F4FC;padding:clamp(22px,3vw,26px) clamp(20px,2.5vw,24px)">
+            <h3
+              style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;letter-spacing:-0.01em;margin:0 0 8px"
+            >
+              <span style="flex:none;color:#5800FF;font-weight:800">✓</span>Teoria
+              esquematizada
+            </h3>
+            <p style="font-size:15px;line-height:1.55;color:#5A5A66;margin:0">
+              O resumo simplificado da aula, com esquemas, tabelas e mapas
+              mentais, direto ao que a banca cobra.
+            </p>
+          </div>
+          <div style="background:#F6F4FC;padding:clamp(22px,3vw,26px) clamp(20px,2.5vw,24px)">
+            <h3
+              style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;letter-spacing:-0.01em;margin:0 0 8px"
+            >
+              <span style="flex:none;color:#5800FF;font-weight:800">✓</span>Cadernos
+              de questões
+            </h3>
+            <p style="font-size:15px;line-height:1.55;color:#5A5A66;margin:0">
+              Questões do TEC Concursos para treinar e aprofundar cada assunto
+              da aula.
+            </p>
+          </div>
+          <div style="background:#F6F4FC;padding:clamp(22px,3vw,26px) clamp(20px,2.5vw,24px)">
+            <h3
+              style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;letter-spacing:-0.01em;margin:0 0 8px"
+            >
+              <span style="flex:none;color:#5800FF;font-weight:800">✓</span>Resumo
+              do resumo
+            </h3>
+            <p style="font-size:15px;line-height:1.55;color:#5A5A66;margin:0">
+              A aula condensada para o revisaço de véspera, quando o tempo é
+              curto e vale revisar só o essencial.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:clamp(28px,4vw,36px)"
+      >
+        <span
+          style="display:inline-flex;align-items:center;gap:8px;background:#5800FF;color:#fff;padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700"
+          >✓ {aulasDisponiveis} aulas disponíveis</span
+        >
+        <span
+          style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #C9B8F0;color:#5800FF;padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700"
+          >{aulasPrevistas} aulas com data prevista</span
+        >
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        {
+          aulas.map((aula, i) => (
+            <details
+              class="aula"
+              style={`border:1px solid ${aula.disponivel ? "#C9B8F0" : "#ECEAF6"};border-radius:16px;background:${aula.disponivel ? "#F6F4FC" : "#fff"}`}
+            >
+              <summary style="list-style:none;cursor:pointer;padding:clamp(18px,3vw,22px) clamp(18px,3vw,26px);display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px">
+                <span style="flex:none;font-size:13px;font-weight:700;color:#9A96AC;min-width:22px">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 style="font-size:clamp(17px,2.4vw,20px);font-weight:800;letter-spacing:-0.015em;margin:0">
+                  {aula.nome}
+                </h3>
+                {aula.disponivel ? (
+                  <span style="display:inline-flex;align-items:center;gap:6px;background:#5800FF;color:#fff;padding:5px 12px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap">
+                    ✓ Disponível
+                  </span>
+                ) : (
+                  <span style="display:inline-flex;align-items:center;background:#fff;border:1px solid #C9B8F0;color:#5800FF;padding:5px 12px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap">
+                    Previsão {aula.previsao}
+                  </span>
+                )}
+                <span style="font-size:13px;color:#8A8A95;margin-left:auto">
+                  {aula.bloco}
+                </span>
+                <span
+                  class="aula-icon"
+                  style="flex:none;font-size:24px;color:#5800FF;font-weight:400;line-height:1;width:16px;text-align:center"
+                />
+              </summary>
+              <ul style="list-style:none;margin:0;padding:0 clamp(18px,3vw,26px) clamp(20px,3vw,24px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px 28px">
+                {aula.assuntos.map((assunto) => (
+                  <li style="display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.5;color:#5A5A66">
+                    <span
+                      style="flex:none;width:5px;height:5px;border-radius:999px;background:#5800FF;margin-top:8px"
+                      aria-hidden="true"
+                    />
+                    {assunto}
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
   <!-- ===== BÔNUS: DISCURSIVA ===== -->
   <section id="bonus" style="background:#fff;border-bottom:1px solid #ECEAF6">
     <div
@@ -788,6 +1097,12 @@ const faqs = [
           <li
             style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#3A3A44"
           >
+            <span style="color:#5800FF;font-weight:800;flex:none">✓</span>Resumo
+            do resumo de cada aula para o revisaço de véspera
+          </li>
+          <li
+            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#3A3A44"
+          >
             <span style="color:#5800FF;font-weight:800;flex:none">✓</span>Bônus:
             10 temas de discursiva + padrão de resposta
           </li>
@@ -982,8 +1297,15 @@ const faqs = [
     #galeria-track::-webkit-scrollbar {
       display: none;
     }
-    .faq summary::-webkit-details-marker {
+    .faq summary::-webkit-details-marker,
+    .aula summary::-webkit-details-marker {
       display: none;
+    }
+    .aula .aula-icon::before {
+      content: "+";
+    }
+    .aula[open] .aula-icon::before {
+      content: "–";
     }
     .faq .faq-icon::before {
       content: "+";
