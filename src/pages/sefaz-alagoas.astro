@@ -157,11 +157,7 @@ const aulas = [
     nome: "Modelagem Relacional",
     bloco: "Ciência de Dados",
     disponivel: true,
-    assuntos: [
-      "Modelagem relacional",
-      "Álgebra relacional",
-      "Normalização",
-    ],
+    assuntos: ["Modelagem relacional", "Álgebra relacional", "Normalização"],
   },
   {
     nome: "Machine Learning",
@@ -631,7 +627,7 @@ const faqs = [
           Esquematizado
         </h3>
         <p style="font-size:16px;line-height:1.6;color:#5A5A66;margin:0">
-          Resumo visual, com mapas mentais, fluxogramas e tabelas para você
+          Resumo visual, com mapas mentais, esquemas e tabelas para você
           absorver o máximo em pouco tempo.
         </p>
       </div>
@@ -649,8 +645,7 @@ const faqs = [
           Cadernos do TEC
         </h3>
         <p style="font-size:16px;line-height:1.6;color:#5A5A66;margin:0">
-          Cada módulo vem com cadernos de questões para você treinar e chegar na
-          prova com repetição.
+          Cada módulo vem com cadernos de questões para você treinar.
         </p>
       </div>
     </div>
@@ -728,11 +723,8 @@ const faqs = [
         <p
           style="font-size:18px;line-height:1.6;color:#5A5A66;margin:0;max-width:620px"
         >
-          Comprando agora você garante as {aulas.length} aulas do material.
-          {aulasDisponiveis} já estão na Área do Aluno e as outras
-          {aulasPrevistas} são liberadas <strong style="color:#0B0B12"
-            >conforme o cronograma previsto</strong
-          >, sem custo adicional. Abra uma aula para ver os assuntos.
+          As aulas serão disponibilizadas conforme o cronograma. Clique em cada
+          uma para ver os assuntos.
         </p>
       </div>
 
@@ -745,36 +737,42 @@ const faqs = [
         <div
           style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:#C9B8F0;border:1px solid #C9B8F0;border-radius:16px;overflow:hidden"
         >
-          <div style="background:#F6F4FC;padding:clamp(22px,3vw,26px) clamp(20px,2.5vw,24px)">
+          <div
+            style="background:#F6F4FC;padding:clamp(22px,3vw,26px) clamp(20px,2.5vw,24px)"
+          >
             <h3
               style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;letter-spacing:-0.01em;margin:0 0 8px"
             >
-              <span style="flex:none;color:#5800FF;font-weight:800">✓</span>Teoria
-              esquematizada
+              <span style="flex:none;color:#5800FF;font-weight:800">✓</span
+              >Teoria esquematizada
             </h3>
             <p style="font-size:15px;line-height:1.55;color:#5A5A66;margin:0">
               O resumo simplificado da aula, com esquemas, tabelas e mapas
-              mentais, direto ao que a banca cobra.
+              mentais, direto ao ponto, só do que a banca cobra.
             </p>
           </div>
-          <div style="background:#F6F4FC;padding:clamp(22px,3vw,26px) clamp(20px,2.5vw,24px)">
+          <div
+            style="background:#F6F4FC;padding:clamp(22px,3vw,26px) clamp(20px,2.5vw,24px)"
+          >
             <h3
               style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;letter-spacing:-0.01em;margin:0 0 8px"
             >
-              <span style="flex:none;color:#5800FF;font-weight:800">✓</span>Cadernos
-              de questões
+              <span style="flex:none;color:#5800FF;font-weight:800">✓</span
+              >Cadernos de questões
             </h3>
             <p style="font-size:15px;line-height:1.55;color:#5A5A66;margin:0">
               Questões do TEC Concursos para treinar e aprofundar cada assunto
               da aula.
             </p>
           </div>
-          <div style="background:#F6F4FC;padding:clamp(22px,3vw,26px) clamp(20px,2.5vw,24px)">
+          <div
+            style="background:#F6F4FC;padding:clamp(22px,3vw,26px) clamp(20px,2.5vw,24px)"
+          >
             <h3
               style="display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;letter-spacing:-0.01em;margin:0 0 8px"
             >
-              <span style="flex:none;color:#5800FF;font-weight:800">✓</span>Resumo
-              do resumo
+              <span style="flex:none;color:#5800FF;font-weight:800">✓</span
+              >Resumo do resumo
             </h3>
             <p style="font-size:15px;line-height:1.55;color:#5A5A66;margin:0">
               A aula condensada para o revisaço de véspera, quando o tempo é
