@@ -6,6 +6,7 @@ import logo from "../assets/images/logo.png";
 import capa from "../assets/images/capa_alagoas.png";
 
 const CHECKOUT = "https://tifacilitada.miblify.com/sefaz-alagoas";
+const DEMO = "https://tifacilitada.miblify.com/demo-alagoas";
 
 const aulaImports = import.meta.glob<{ default: ImageMetadata }>(
   "../assets/images/aulas/*.png",
@@ -138,6 +139,7 @@ const aulas = [
     nome: "Gestão da Informação",
     bloco: "Ciência de Dados",
     disponivel: true,
+    demo: true,
     assuntos: [
       "Dado, informação, conhecimento e inteligência",
       "Dados estruturados, não estruturados e dados abertos",
@@ -407,6 +409,16 @@ const faqs = [
               Acesso imediato<br />Garantia de 7 dias
             </div>
           </div>
+          <p style="font-size:15px;color:#5A5A66;margin:-8px 0 28px">
+            Quer ver antes de comprar?{" "}
+            <a
+              href={DEMO}
+              target="_blank"
+              rel="noopener"
+              style="color:#5800FF;font-weight:700;text-decoration:underline;text-underline-offset:3px"
+              >Baixe a aula demonstrativa de Gestão da Informação</a
+            >
+          </p>
           <div
             style="display:flex;flex-wrap:wrap;gap:clamp(18px,4vw,28px);align-items:center;padding-top:28px;border-top:1px solid #ECEAF6"
           >
@@ -837,6 +849,18 @@ const faqs = [
                   </li>
                 ))}
               </ul>
+              {aula.demo && (
+                <div style="padding:0 clamp(18px,3vw,26px) clamp(20px,3vw,24px)">
+                  <a
+                    href={DEMO}
+                    target="_blank"
+                    rel="noopener"
+                    style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #C9B8F0;color:#5800FF;padding:11px 18px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none"
+                  >
+                    Baixar esta aula de graça <span>→</span>
+                  </a>
+                </div>
+              )}
             </details>
           ))
         }
