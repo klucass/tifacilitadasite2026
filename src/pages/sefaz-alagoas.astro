@@ -334,7 +334,7 @@ const aulas = [
   {
     nome: "ITIL",
     bloco: "Infraestrutura de TIC e Segurança",
-    previsao: "20/10",
+    disponivel: true,
     assuntos: [
       "Gestão de serviços de TI",
       "ITIL v4: controle de mudanças e gerenciamento de liberação",
@@ -344,7 +344,7 @@ const aulas = [
   {
     nome: "Segurança da Informação",
     bloco: "Infraestrutura de TIC e Segurança",
-    previsao: "23/10",
+    disponivel: true,
     assuntos: [
       "Segurança da informação: gestão, continuidade do negócio e gestão de riscos",
       "Gestão de identidade e acesso",
@@ -363,13 +363,17 @@ const aulasDisponiveis = aulas.filter((a) => a.disponivel).length;
 const aulasPrevistas = aulas.length - aulasDisponiveis;
 
 const faqs = [
+  ...(aulasPrevistas > 0
+    ? [
+        {
+          q: "E as aulas que ainda não foram liberadas?",
+          a: "Comprando agora, você recebe todas as aulas do material, sem pagar nada a mais. As já liberadas ficam disponíveis na hora e as demais entram na Área do Aluno conforme o cronograma previsto.",
+        },
+      ]
+    : []),
   {
     q: "O material é específico para a SEFAZ Alagoas?",
     a: "Sim. O conteúdo é organizado bloco a bloco seguindo a divisão de pontos da prova de TI da SEFAZ-AL: Ciência de Dados, Inteligência Artificial, Desenvolvimento e Infraestrutura de TIC e Segurança — com peso maior justamente onde a prova concentra mais pontos.",
-  },
-  {
-    q: "E as aulas que ainda não foram liberadas?",
-    a: "Comprando agora, você recebe todas as aulas do material, sem pagar nada a mais. As já liberadas ficam disponíveis na hora e as demais entram na Área do Aluno conforme o cronograma previsto.",
   },
   {
     q: "Preciso saber de TI para começar?",
@@ -797,8 +801,9 @@ const faqs = [
         <p
           style="font-size:18px;line-height:1.6;color:#5A5A66;margin:0;max-width:620px"
         >
-          As aulas serão disponibilizadas conforme o cronograma. Clique em cada
-          uma para ver os assuntos.
+          {aulasPrevistas > 0
+            ? "As aulas serão disponibilizadas conforme o cronograma. Clique em cada uma para ver os assuntos."
+            : "Todas as aulas já estão disponíveis. Clique em cada uma para ver os assuntos."}
         </p>
       </div>
 
@@ -863,10 +868,12 @@ const faqs = [
           style="display:inline-flex;align-items:center;gap:8px;background:#5800FF;color:#fff;padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700"
           >✓ {aulasDisponiveis} aulas disponíveis</span
         >
-        <span
-          style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #C9B8F0;color:#5800FF;padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700"
-          >{aulasPrevistas} aulas com data prevista</span
-        >
+        {aulasPrevistas > 0 && (
+          <span
+            style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #C9B8F0;color:#5800FF;padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700"
+            >{aulasPrevistas} aulas com data prevista</span
+          >
+        )}
       </div>
 
       <div style="display:flex;flex-direction:column;gap:12px">
