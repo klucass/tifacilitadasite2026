@@ -5,7 +5,8 @@ import { Image } from "astro:assets";
 import logo from "../assets/images/logo.png";
 import capa from "../assets/images/capa_alagoas.png";
 
-const CHECKOUT = "https://tifacilitada.miblify.com/sefaz-alagoas";
+const CHECKOUT =
+  "https://tifacilitada.miblify.com/sefaz-alagoas?coupon=BLACKFRIDAY30";
 const DEMO = "https://tifacilitada.miblify.com/demo-alagoas";
 
 const aulaImports = import.meta.glob<{ default: ImageMetadata }>(
@@ -418,12 +419,22 @@ const faqs = [
   title="TI Facilitada - SEFAZ Alagoas"
   description="Material de TI para a SEFAZ Alagoas: 60 pontos em jogo (50 na objetiva + 10 na discursiva de Ciência de Dados). Resumos esquematizados em PDF, cadernos de questões do TEC Concursos e bônus com 10 temas de discursiva e padrão de resposta. Acesso imediato e garantia de 7 dias."
 >
+  <a
+    href="#oferta"
+    style="display:block;background:#0B0B12;color:#fff;text-align:center;text-decoration:none;padding:10px 16px;font-size:14px;font-weight:600;border-bottom:1px solid #2A2A36"
+  >
+    <span
+      style="background:#72FFFF;color:#0B0B12;font-weight:800;padding:2px 8px;border-radius:4px;letter-spacing:0.04em;margin-right:8px"
+      >BLACK FRIDAY</span
+    >TI SEFAZ Alagoas de <s style="color:#A9A6B8">R$249</s> por
+    <strong style="color:#72FFFF">R$174,30</strong> →
+  </a>
   <Header />
 
   <!-- ===== HERO ===== -->
   <section
     id="topo"
-    style="background:linear-gradient(180deg,#F0EDFA 0%,#FFFFFF 100%)"
+    style="background:radial-gradient(ellipse at 85% 10%,rgba(88,0,255,0.45) 0%,rgba(88,0,255,0) 55%),#0B0B12;color:#fff"
   >
     <div
       style="max-width:1180px;margin:0 auto;padding:clamp(48px,8vw,88px) clamp(20px,5vw,28px) clamp(56px,9vw,96px)"
@@ -433,28 +444,28 @@ const faqs = [
       >
         <div style="flex:1 1 420px;max-width:600px">
           <span
-            style="display:inline-flex;align-items:center;background:#5800FF;color:#F0EDFA;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:22px"
-            >Resumo em PDF · Pós-edital · SEFAZ AL</span
+            style="display:inline-flex;align-items:center;background:#72FFFF;color:#0B0B12;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:22px"
+            >Black Friday · de R$249 por R$174,30</span
           >
           <h1
-            style="font-size:clamp(34px,6.4vw,48px);line-height:1.03;letter-spacing:-0.03em;font-weight:800;margin:0 0 22px"
+            style="font-size:clamp(34px,6.4vw,48px);line-height:1.03;letter-spacing:-0.03em;font-weight:800;margin:0 0 22px;color:#fff"
           >
             Garanta os <span
-              style="background:#72FFFF;padding:0 8px;border-radius:4px"
+              style="background:#72FFFF;color:#0B0B12;padding:0 8px;border-radius:4px"
               >30% da prova</span
             > que estão em TI na SEFAZ Alagoas
           </h1>
           <p
-            style="font-size:clamp(17px,2.4vw,19px);line-height:1.6;color:#4A4A55;margin:0 0 20px;max-width:540px"
+            style="font-size:clamp(17px,2.4vw,19px);line-height:1.6;color:#C9C6D6;margin:0 0 20px;max-width:540px"
           >
-            São <strong style="color:#0B0B12">{pontosObjetiva} pontos</strong> na
-            prova objetiva mais <strong style="color:#0B0B12"
+            São <strong style="color:#fff">{pontosObjetiva} pontos</strong> na
+            prova objetiva mais <strong style="color:#fff"
               >{pontosDiscursiva} pontos</strong
             > na discursiva de Ciência de Dados. É a maior concentração de pontos
             do edital.
           </p>
           <p
-            style="font-size:clamp(17px,2.4vw,19px);line-height:1.6;color:#4A4A55;margin:0 0 34px;max-width:540px"
+            style="font-size:clamp(17px,2.4vw,19px);line-height:1.6;color:#C9C6D6;margin:0 0 34px;max-width:540px"
           >
             Este material entrega esses {pontosTotais} pontos resumidos, esquematizados
             e com cadernos de questões, feito para quem não é da área. Inclui 10 temas
@@ -467,26 +478,28 @@ const faqs = [
               class="cta cta-primary"
               href={CHECKOUT}
               style="text-decoration:none;background:#5800FF;color:#fff;padding:17px 28px;border-radius:11px;font-size:17px;font-weight:700;display:inline-flex;align-items:center;gap:10px"
-              >Garantir meu acesso por R$249 <span style="font-size:18px"
+              >Garantir meu acesso por R$174,30 <span style="font-size:18px"
                 >→</span
               ></a
             >
-            <div style="font-size:14px;color:#6A6A75;line-height:1.4">
-              Acesso imediato<br />Garantia de 7 dias
+            <div style="font-size:14px;color:#A9A6B8;line-height:1.4">
+              <span style="text-decoration:line-through">R$249</span>
+              <strong style="color:#72FFFF">· cupom BLACKFRIDAY30</strong><br
+              />Acesso imediato · Garantia de 7 dias
             </div>
           </div>
-          <p style="font-size:15px;color:#5A5A66;margin:-8px 0 28px">
+          <p style="font-size:15px;color:#C9C6D6;margin:-8px 0 28px">
             Quer ver antes de comprar?{" "}
             <a
               href={DEMO}
               target="_blank"
               rel="noopener"
-              style="color:#5800FF;font-weight:700;text-decoration:underline;text-underline-offset:3px"
+              style="color:#72FFFF;font-weight:700;text-decoration:underline;text-underline-offset:3px"
               >Baixe a aula demonstrativa de Gestão da Informação</a
             >
           </p>
           <div
-            style="display:flex;flex-wrap:wrap;gap:clamp(18px,4vw,28px);align-items:center;padding-top:28px;border-top:1px solid #ECEAF6"
+            style="display:flex;flex-wrap:wrap;gap:clamp(18px,4vw,28px);align-items:center;padding-top:28px;border-top:1px solid #2A2A36"
           >
             <div>
               <div
@@ -494,29 +507,29 @@ const faqs = [
               >
                 {pontosTotais}
               </div>
-              <div style="font-size:13px;color:#6A6A75">
+              <div style="font-size:13px;color:#A9A6B8">
                 pontos de TI em jogo
               </div>
             </div>
-            <div style="width:1px;height:36px;background:#ECEAF6"></div>
+            <div style="width:1px;height:36px;background:#2A2A36"></div>
             <div>
               <div
                 style="font-size:24px;font-weight:800;letter-spacing:-0.02em"
               >
                 30%
               </div>
-              <div style="font-size:13px;color:#6A6A75">
+              <div style="font-size:13px;color:#A9A6B8">
                 da pontuação da prova
               </div>
             </div>
-            <div style="width:1px;height:36px;background:#ECEAF6"></div>
+            <div style="width:1px;height:36px;background:#2A2A36"></div>
             <div>
               <div
                 style="font-size:24px;font-weight:800;letter-spacing:-0.02em"
               >
                 100%
               </div>
-              <div style="font-size:13px;color:#6A6A75">digital · PDF</div>
+              <div style="font-size:13px;color:#A9A6B8">digital · PDF</div>
             </div>
           </div>
         </div>
@@ -524,7 +537,7 @@ const faqs = [
           style="flex:0 1 360px;display:flex;justify-content:center;max-width:100%"
         >
           <div
-            style="position:relative;padding:16px;background:#F6F4FC;border:1px solid #ECEAF6;border-radius:20px;max-width:100%"
+            style="position:relative;padding:16px;background:#16161F;border:1px solid #2A2A36;border-radius:20px;max-width:100%"
           >
             <Image
               src={capa}
@@ -535,9 +548,9 @@ const faqs = [
               style="width:min(320px,72vw);height:auto;border-radius:12px;display:block"
             />
             <div
-              style="position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);background:#0B0B12;color:#fff;padding:8px 16px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap"
+              style="position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);background:#72FFFF;color:#0B0B12;padding:8px 16px;border-radius:999px;font-size:12px;font-weight:800;white-space:nowrap"
             >
-              SEFAZ AL · Auditor Fiscal
+              Black Friday · -30%
             </div>
           </div>
         </div>
@@ -1150,17 +1163,17 @@ const faqs = [
   </section>
 
   <!-- ===== OFERTA ===== -->
-  <section id="oferta" style="background:#fff">
+  <section id="oferta" style="background:#0B0B12;color:#fff">
     <div
       style="max-width:1180px;margin:0 auto;padding:clamp(64px,9vw,104px) clamp(20px,5vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(36px,5vw,48px);align-items:center"
     >
       <div>
         <span
-          style="display:inline-flex;align-items:center;background:#F0EDFA;color:#5800FF;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:18px"
-          >Oferta exclusiva</span
+          style="display:inline-flex;align-items:center;background:#72FFFF;color:#0B0B12;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:18px"
+          >Oferta Black Friday</span
         >
         <h2
-          style="font-size:clamp(28px,4.6vw,44px);line-height:1.06;letter-spacing:-0.025em;font-weight:800;margin:0 0 24px"
+          style="font-size:clamp(28px,4.6vw,44px);line-height:1.06;letter-spacing:-0.025em;font-weight:800;margin:0 0 24px;color:#fff"
         >
           Fortaleça os {pontosTotais} pontos de TI com um material só
         </h2>
@@ -1168,73 +1181,85 @@ const faqs = [
           style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px"
         >
           <li
-            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#3A3A44"
+            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#D8D6E2"
           >
-            <span style="color:#5800FF;font-weight:800;flex:none">✓</span>Os 4
+            <span style="color:#72FFFF;font-weight:800;flex:none">✓</span>Os 4
             blocos de TI da SEFAZ-AL em PDF esquematizado
           </li>
           <li
-            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#3A3A44"
+            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#D8D6E2"
           >
-            <span style="color:#5800FF;font-weight:800;flex:none">✓</span
+            <span style="color:#72FFFF;font-weight:800;flex:none">✓</span
             >Ciência de Dados aprofundado para a objetiva e a discursiva
           </li>
           <li
-            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#3A3A44"
+            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#D8D6E2"
           >
-            <span style="color:#5800FF;font-weight:800;flex:none">✓</span
+            <span style="color:#72FFFF;font-weight:800;flex:none">✓</span
             >Cadernos de questões do TEC Concursos
           </li>
           <li
-            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#3A3A44"
+            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#D8D6E2"
           >
-            <span style="color:#5800FF;font-weight:800;flex:none">✓</span>Resumo
+            <span style="color:#72FFFF;font-weight:800;flex:none">✓</span>Resumo
             do resumo de cada aula para o revisaço de véspera
           </li>
           <li
-            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#3A3A44"
+            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#D8D6E2"
           >
-            <span style="color:#5800FF;font-weight:800;flex:none">✓</span>Bônus:
+            <span style="color:#72FFFF;font-weight:800;flex:none">✓</span>Bônus:
             10 temas de discursiva + padrão de resposta
           </li>
           <li
-            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#3A3A44"
+            style="display:flex;gap:14px;align-items:flex-start;font-size:17px;color:#D8D6E2"
           >
-            <span style="color:#5800FF;font-weight:800;flex:none">✓</span>Acesso
+            <span style="color:#72FFFF;font-weight:800;flex:none">✓</span>Acesso
             imediato e atualizações da edição
           </li>
         </ul>
       </div>
       <div
-        style="background:#fff;border:1px solid #ECEAF6;border-radius:22px;padding:clamp(32px,5vw,44px) clamp(28px,4vw,40px);text-align:center;box-shadow:0 18px 48px rgba(88,0,255,0.10)"
+        style="position:relative;background:#16161F;border:2px solid #72FFFF;border-radius:22px;padding:clamp(40px,5vw,52px) clamp(28px,4vw,40px) clamp(32px,5vw,44px);text-align:center;box-shadow:0 18px 60px rgba(114,255,255,0.18)"
       >
         <div
-          style="font-size:13px;font-weight:600;color:#8A8A95;margin-bottom:12px"
+          style="position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:#72FFFF;color:#0B0B12;padding:7px 16px;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:0.04em;white-space:nowrap"
+        >
+          BLACK FRIDAY · -30%
+        </div>
+        <div
+          style="font-size:13px;font-weight:600;color:#A9A6B8;margin-bottom:12px"
         >
           Resumo Facilitado de TI · SEFAZ AL Pós-Edital
+        </div>
+        <div style="font-size:16px;color:#A9A6B8;margin-bottom:4px">
+          de <span style="text-decoration:line-through">R$249</span> por
         </div>
         <div
           style="display:flex;align-items:baseline;justify-content:center;gap:6px;margin-bottom:6px"
         >
-          <span style="font-size:22px;font-weight:700;color:#5A5A66">R$</span
+          <span style="font-size:22px;font-weight:700;color:#72FFFF">R$</span
           ><span
-            style="font-size:clamp(54px,9vw,54px);font-weight:500;letter-spacing:-0.03em;line-height:1"
-            >249</span
+            style="font-size:clamp(54px,9vw,64px);font-weight:800;letter-spacing:-0.03em;line-height:1;color:#72FFFF"
+            >174</span
+          ><span
+            style="font-size:28px;font-weight:800;color:#72FFFF;margin-left:-6px"
+            >,30</span
           >
         </div>
-        <div style="font-size:15px;color:#6A6A75;margin-bottom:28px">
-          à vista ou parcelado no cartão
+        <div style="font-size:15px;color:#C9C6D6;margin-bottom:28px">
+          Cupom <strong style="color:#72FFFF">BLACKFRIDAY30</strong> já aplicado no
+          link<br />Você economiza R$74,70 · à vista ou parcelado no cartão
         </div>
         <a
           class="cta cta-primary"
           href={CHECKOUT}
           style="display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#5800FF;color:#fff;padding:18px 28px;border-radius:12px;font-size:18px;font-weight:700;margin-bottom:18px"
-          >Quero garantir meu acesso <span>→</span></a
+          >Quero aproveitar a Black Friday <span>→</span></a
         >
         <div
-          style="display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;color:#6A6A75"
+          style="display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;color:#A9A6B8"
         >
-          <span style="color:#5800FF;font-weight:800">✓</span>Compra segura ·
+          <span style="color:#72FFFF;font-weight:800">✓</span>Compra segura ·
           Garantia de 7 dias
         </div>
       </div>
@@ -1328,26 +1353,29 @@ const faqs = [
   </section>
 
   <!-- ===== CTA FINAL ===== -->
-  <section style="background:#5800FF;color:#fff">
+  <section
+    style="background:radial-gradient(ellipse at 50% 0%,rgba(88,0,255,0.55) 0%,rgba(88,0,255,0) 60%),#0B0B12;color:#fff"
+  >
     <div
       style="max-width:900px;margin:0 auto;padding:clamp(72px,10vw,110px) clamp(20px,5vw,28px);text-align:center"
     >
       <h2
         style="font-size:clamp(30px,6vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:800;margin:0 0 20px;color:#fff"
       >
-        Fortaleça os 30% da prova<br />que mais rendem.
+        <span style="color:#72FFFF">Black Friday:</span><br />fortaleça os 30% da
+        prova que mais rendem.
       </h2>
       <p
-        style="font-size:clamp(17px,2.4vw,19px);line-height:1.6;color:#D8CEFF;margin:0 auto 36px;max-width:560px"
+        style="font-size:clamp(17px,2.4vw,19px);line-height:1.6;color:#C9C6D6;margin:0 auto 36px;max-width:560px"
       >
         Os 4 blocos de TI da SEFAZ Alagoas resumidos e esquematizados, com
-        cadernos de questões e o bônus de discursivas, por R$249 e 7 dias de
+        cadernos de questões e o bônus de discursivas, de <s>R$249</s> por R$174,30 e 7 dias de
         garantia.
       </p>
       <a
         class="cta cta-light"
         href={CHECKOUT}
-        style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:#fff;color:#5800FF;padding:18px 32px;border-radius:12px;font-size:18px;font-weight:700"
+        style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:#72FFFF;color:#0B0B12;padding:18px 32px;border-radius:12px;font-size:18px;font-weight:700"
         >Garantir meu acesso agora <span>→</span></a
       >
     </div>
