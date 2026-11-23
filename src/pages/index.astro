@@ -4,9 +4,13 @@ import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import BancasStrip from "../components/BancasStrip.astro";
 import Benefits from "../components/Benefits.astro";
+import BarraCompra from "../components/BarraCompra.astro";
 import { Image } from "astro:assets";
 import logo from "../assets/images/logo.png";
 import capaAlagoas from "../assets/images/capa_alagoas.png";
+
+const CHECKOUT =
+  "https://tifacilitada.miblify.com/fluencia-em-dados?coupon=BLACKFRIDAY30";
 
 const AULA_DEMO =
   "https://tifacilitada.miblify.com/aula-demonstrativa?utm_source=site&utm_medium=galeria&utm_campaign=aula-demonstrativa&utm_content=botao-pos-carrossel";
@@ -132,9 +136,11 @@ const faqs = [
         style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px"
       >
         <div
+          class="mod"
           style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
         >
           <div
+            class="mod-head"
             style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
           >
             <span
@@ -189,9 +195,11 @@ const faqs = [
         </div>
 
         <div
+          class="mod"
           style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
         >
           <div
+            class="mod-head"
             style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
           >
             <span
@@ -260,9 +268,11 @@ const faqs = [
         </div>
 
         <div
+          class="mod"
           style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
         >
           <div
+            class="mod-head"
             style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
           >
             <span
@@ -338,9 +348,11 @@ const faqs = [
         </div>
 
         <div
+          class="mod"
           style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
         >
           <div
+            class="mod-head"
             style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
           >
             <span
@@ -402,9 +414,11 @@ const faqs = [
         </div>
 
         <div
+          class="mod"
           style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
         >
           <div
+            class="mod-head"
             style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
           >
             <span
@@ -459,9 +473,11 @@ const faqs = [
         </div>
 
         <div
+          class="mod"
           style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
         >
           <div
+            class="mod-head"
             style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
           >
             <span
@@ -516,9 +532,11 @@ const faqs = [
         </div>
 
         <div
+          class="mod"
           style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
         >
           <div
+            class="mod-head"
             style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
           >
             <span
@@ -587,9 +605,11 @@ const faqs = [
         </div>
 
         <div
+          class="mod"
           style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
         >
           <div
+            class="mod-head"
             style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
           >
             <span
@@ -644,9 +664,11 @@ const faqs = [
         </div>
 
         <div
+          class="mod"
           style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
         >
           <div
+            class="mod-head"
             style="display:flex;align-items:center;gap:12px;margin-bottom:20px"
           >
             <span
@@ -715,9 +737,11 @@ const faqs = [
         </div>
 
         <div
+          class="mod"
           style="border:1.5px solid #C9B8F0;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
         >
           <div
+            class="mod-head"
             style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap"
           >
             <span
@@ -779,9 +803,11 @@ const faqs = [
         </div>
 
         <div
+          class="mod"
           style="border:1.5px solid #C9B8F0;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
         >
           <div
+            class="mod-head"
             style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap"
           >
             <span
@@ -836,9 +862,11 @@ const faqs = [
         </div>
 
         <div
+          class="mod"
           style="border:1.5px solid #C9B8F0;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff"
         >
           <div
+            class="mod-head"
             style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap"
           >
             <span
@@ -890,7 +918,7 @@ const faqs = [
           Arraste para o lado e veja amostras do conteúdo do material.
         </p>
       </div>
-      <div style="display:flex;gap:12px">
+      <div class="gal-setas" style="display:flex;gap:12px">
         <button
           id="gal-prev"
           type="button"
@@ -1115,6 +1143,7 @@ const faqs = [
     style="background:#F6F4FC;border-top:1px solid #ECEAF6;border-bottom:1px solid #ECEAF6"
   >
     <div
+      class="garantia"
       style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,40px);justify-content:center;max-width:760px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,5vw,28px)"
     >
       <div
@@ -1166,6 +1195,7 @@ const faqs = [
             material pós-edital, bloco a bloco, para você garantir esses pontos.
           </p>
           <div
+            class="stats-3"
             style="display:flex;flex-wrap:wrap;gap:clamp(16px,4vw,28px);align-items:center;margin-bottom:28px"
           >
             <div>
@@ -1323,6 +1353,7 @@ const faqs = [
           href="https://app.miblify.com/login/my_library"
           target="_blank"
           rel="noopener"
+          class="link-toque"
           style="text-decoration:none;color:#5800FF;font-size:13px;font-weight:700;align-self:flex-start"
           >Área do aluno →</a
         >
@@ -1332,6 +1363,8 @@ const faqs = [
       </div>
     </div>
   </footer>
+
+  <BarraCompra href={CHECKOUT} de="R$97" por="R$67,90" nota="Cupom BLACKFRIDAY30" />
 
   <style>
     #galeria-track {

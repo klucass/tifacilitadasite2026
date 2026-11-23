@@ -65,3 +65,198 @@ image-slot {
   background: #72ffff !important;
   box-shadow: 0 8px 24px rgba(11, 11, 18, 0.18);
 }
+
+/* O grifo do título quebra de linha no celular: cada pedaço fica com o seu
+   próprio fundo arredondado, em vez de um retângulo cortado ao meio. */
+.grifo {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* A barra de compra só existe no celular (BarraCompra.astro). */
+.barra-compra {
+  display: none;
+}
+
+/* ===== CELULAR =====
+   O layout é todo em estilo inline, então o que muda no celular entra por
+   classe e precisa de !important para vencer o atributo style. */
+@media (max-width: 760px) {
+  /* Botões de compra ocupam a largura toda: alvo grande para o polegar. */
+  .cta {
+    display: flex !important;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    font-size: 16px !important;
+  }
+
+  /* Alvos de toque com pelo menos 44px de altura. */
+  .btn-aluno {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+  .link-toque {
+    display: inline-block;
+    padding: 12px 0;
+  }
+
+  /* A capa do topo não precisa tomar uma tela inteira. */
+  .hero-capa {
+    width: min(230px, 58vw) !important;
+  }
+
+  /* No celular a galeria se arrasta com o dedo; as setas só ocupam espaço. */
+  .gal-setas {
+    display: none !important;
+  }
+
+  .garantia {
+    text-align: center;
+  }
+
+  /* Três números lado a lado, sem a divisória que sobrava na quebra. */
+  .stats-3 {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px !important;
+    align-items: start !important;
+  }
+  .stats-3 > div:nth-child(even) {
+    display: none;
+  }
+
+  /* --- Módulos recolhíveis (o script fica no Layout) --- */
+  .mods-js .mod {
+    padding: 18px 20px !important;
+  }
+  .mods-js .mod-head {
+    position: relative;
+    cursor: pointer;
+    padding-right: 34px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* Seta desenhada com borda, sem depender de glifo da fonte. */
+  .mods-js .mod-head::after {
+    content: "";
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    margin-top: -8px;
+    border-right: 2.5px solid #5800ff;
+    border-bottom: 2.5px solid #5800ff;
+    transform: rotate(45deg);
+    transition: transform 0.18s ease;
+  }
+  .mods-js .mod:not(.mod--fechado) .mod-head::after {
+    transform: rotate(-135deg);
+    margin-top: -2px;
+  }
+  .mods-js .mod--fechado > :not(.mod-head) {
+    display: none !important;
+  }
+  .mods-js .mod--fechado .mod-head {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  /* --- Aulas da SEFAZ: número, título e ícone numa linha; selo e bloco na outra --- */
+  .aula > summary {
+    display: grid !important;
+    grid-template-columns: auto auto 1fr auto;
+    gap: 8px 12px !important;
+    align-items: center;
+  }
+  .aula > summary > h3 {
+    grid-column: 2 / 4;
+  }
+  .aula > summary > :nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+  }
+  .aula > summary > :nth-child(4) {
+    grid-column: 3;
+    grid-row: 2;
+    margin-left: 0 !important;
+  }
+  .aula > summary > .aula-icon {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  /* --- Barra de compra fixa --- */
+  .barra-compra:not([hidden]) {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 70;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(11, 11, 18, 0.96);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid #2a2a36;
+    color: #fff;
+    transform: translateY(110%);
+    transition: transform 0.22s ease;
+  }
+  .barra-compra--visivel:not([hidden]) {
+    transform: none;
+  }
+  .barra-compra__preco {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    min-width: 0;
+  }
+  .barra-compra__preco s {
+    color: #a9a6b8;
+    font-size: 13px;
+  }
+  .barra-compra__preco strong {
+    color: #72ffff;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .barra-compra__preco small {
+    color: #a9a6b8;
+    font-size: 12px;
+  }
+  .barra-compra__botao {
+    flex: none;
+    background: #5800ff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 20px;
+    border-radius: 11px;
+    white-space: nowrap;
+  }
+  /* O rodapé não fica escondido atrás da barra. */
+  body:has(.barra-compra) footer {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .barra-compra,
+  .mod-head::after {
+    transition: none !important;
+  }
+}

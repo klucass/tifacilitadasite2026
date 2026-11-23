@@ -1,0 +1,55 @@
+---
+/**
+ * Barra de compra fixa no rodapé, só no celular (≤ 760px, ver globals.css).
+ * Ela aparece quando nenhum outro botão de compra está na tela: no celular a
+ * página é longa e o botão do topo some logo na primeira rolagem.
+ */
+interface Props {
+  /** Link do checkout — o mesmo dos outros botões de compra da página. */
+  href: string;
+  /** Preço cheio, que sai riscado. */
+  de: string;
+  /** Preço da oferta. */
+  por: string;
+  /** Linha pequena abaixo do preço. */
+  nota?: string;
+  /** Texto do botão. */
+  rotulo?: string;
+}
+const { href, de, por, nota = "Cupom já aplicado", rotulo = "Garantir acesso" } = Astro.props;
+---
+
+<div class="barra-compra" data-href={href} hidden>
+  <div class="barra-compra__preco">
+    <span><s>{de}</s> <strong>{por}</strong></span>
+    <small>{nota}</small>
+  </div>
+  <a class="barra-compra__botao" href={href}>{rotulo}</a>
+</div>
+
+<script is:inline>
+  (() => {
+    const barra = document.querySelector(".barra-compra");
+    if (!barra || !("IntersectionObserver" in window)) return;
+    // Os outros botões de compra da página: enquanto um deles estiver na
+    // tela, a barra seria só repetição.
+    const botoes = [...document.querySelectorAll("a[href]")].filter(
+      (a) => a.getAttribute("href") === barra.dataset.href && !barra.contains(a),
+    );
+    const visiveis = new Set();
+    const atualizar = () => {
+      const mostrar = visiveis.size === 0 && window.scrollY > 320;
+      barra.classList.toggle("barra-compra--visivel", mostrar);
+      // Fora da tela, sai também da ordem de tabulação e do leitor de tela.
+      barra.toggleAttribute("inert", !mostrar);
+    };
+    const observador = new IntersectionObserver((entradas) => {
+      entradas.forEach((e) => (e.isIntersecting ? visiveis.add(e.target) : visiveis.delete(e.target)));
+      atualizar();
+    });
+    botoes.forEach((b) => observador.observe(b));
+    barra.hidden = false;
+    window.addEventListener("scroll", atualizar, { passive: true });
+    atualizar();
+  })();
+</script>

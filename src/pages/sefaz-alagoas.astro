@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import BarraCompra from "../components/BarraCompra.astro";
 import { Image } from "astro:assets";
 import logo from "../assets/images/logo.png";
 import capa from "../assets/images/capa_alagoas.png";
@@ -451,6 +452,7 @@ const faqs = [
             style="font-size:clamp(34px,6.4vw,48px);line-height:1.03;letter-spacing:-0.03em;font-weight:800;margin:0 0 22px;color:#fff"
           >
             Garanta os <span
+              class="grifo"
               style="background:#72FFFF;color:#0B0B12;padding:0 8px;border-radius:4px"
               >30% da prova</span
             > que estão em TI na SEFAZ Alagoas
@@ -499,6 +501,7 @@ const faqs = [
             >
           </p>
           <div
+            class="stats-3"
             style="display:flex;flex-wrap:wrap;gap:clamp(18px,4vw,28px);align-items:center;padding-top:28px;border-top:1px solid #2A2A36"
           >
             <div>
@@ -545,6 +548,7 @@ const faqs = [
               loading="eager"
               widths={[320, 480, 640]}
               sizes="(max-width: 444px) 72vw, 320px"
+              class="hero-capa"
               style="width:min(320px,72vw);height:auto;border-radius:12px;display:block"
             />
             <div
@@ -770,8 +774,8 @@ const faqs = [
       <div style="display:flex;flex-direction:column;gap:20px">
         {
           modulos.map((m) => (
-            <div style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff">
-              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid #ECEAF6">
+            <div class="mod" style="border:1px solid #ECEAF6;border-radius:16px;padding:clamp(24px,4vw,32px);background:#fff">
+              <div class="mod-head" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid #ECEAF6">
                 <h3 style="font-size:clamp(20px,3vw,24px);font-weight:800;letter-spacing:-0.015em;margin:0">
                   {m.bloco}
                 </h3>
@@ -1042,7 +1046,7 @@ const faqs = [
           Veja como o conteúdo é apresentado.
         </h2>
       </div>
-      <div style="display:flex;gap:10px">
+      <div class="gal-setas" style="display:flex;gap:10px">
         <button
           id="gal-prev"
           type="button"
@@ -1271,6 +1275,7 @@ const faqs = [
     style="background:#F6F4FC;border-top:1px solid #ECEAF6;border-bottom:1px solid #ECEAF6"
   >
     <div
+      class="garantia"
       style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,40px);justify-content:center;max-width:760px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,5vw,28px)"
     >
       <div
@@ -1398,6 +1403,7 @@ const faqs = [
           href="https://app.miblify.com/login/my_library"
           target="_blank"
           rel="noopener"
+          class="link-toque"
           style="text-decoration:none;color:#5800FF;font-size:13px;font-weight:700;align-self:flex-start"
           >Área do aluno →</a
         >
@@ -1407,6 +1413,8 @@ const faqs = [
       </div>
     </div>
   </footer>
+
+  <BarraCompra href={CHECKOUT} de="R$249" por="R$174,30" nota="Cupom BLACKFRIDAY30" />
 
   <style>
     #galeria-track {

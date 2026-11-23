@@ -18,12 +18,53 @@ const {
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href={favicon.src} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0B0B12" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body>
     <slot />
+    <!-- Módulos recolhíveis no celular: cada .mod vira um item de sanfona,
+         com o primeiro aberto. Sem JS (ou no desktop) tudo fica aberto. -->
+    <script is:inline>
+      (() => {
+        const mods = [...document.querySelectorAll(".mod")];
+        if (!mods.length) return;
+        const celular = window.matchMedia("(max-width: 760px)");
+        document.documentElement.classList.add("mods-js");
+        mods.forEach((mod, i) => {
+          const cabeca = mod.querySelector(".mod-head");
+          if (!cabeca) return;
+          const alternar = (fechar) => {
+            mod.classList.toggle("mod--fechado", fechar);
+            cabeca.setAttribute("aria-expanded", String(!fechar));
+          };
+          const preparar = () => {
+            if (celular.matches) {
+              cabeca.setAttribute("role", "button");
+              cabeca.setAttribute("tabindex", "0");
+              alternar(i !== 0);
+            } else {
+              // No desktop a classe não tem efeito; os atributos saem para o
+              // título não ser anunciado como botão.
+              mod.classList.remove("mod--fechado");
+              ["role", "tabindex", "aria-expanded"].forEach((a) => cabeca.removeAttribute(a));
+            }
+          };
+          preparar();
+          celular.addEventListener("change", preparar);
+          cabeca.addEventListener("click", () => {
+            if (celular.matches) alternar(!mod.classList.contains("mod--fechado"));
+          });
+          cabeca.addEventListener("keydown", (e) => {
+            if (!celular.matches || (e.key !== "Enter" && e.key !== " ")) return;
+            e.preventDefault();
+            alternar(!mod.classList.contains("mod--fechado"));
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
